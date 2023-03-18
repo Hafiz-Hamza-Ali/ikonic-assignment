@@ -1,0 +1,32 @@
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Auth routes
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+});
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Merchant routes
+Route::middleware(['auth', 'merchant'])->prefix('merchant')->name('merchant.')->group(function () {
+    Route::get('/', [MerchantController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [MerchantController::class, 'profile'])->name('profile');
+    Route::get('/orders', [MerchantController::class, 'orders'])->name('orders');
+});
+
+// Affiliate routes
+Route::middleware(['auth', 'affiliate'])->prefix('affiliate')->name('affiliate.')->group(function () {
+    Route::get('/', [AffiliateController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [AffiliateController::class, 'profile'])->name('profile');
+    Route::get('/orders', [AffiliateController::class, 'orders'])->name('orders');
+});
+
+// Admin routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/merchants', [AdminController::class, 'merchants'])->name('merchants');
+    Route::get('/affiliates', [AdminController::class, 'affiliates'])->name('affiliates');
+});

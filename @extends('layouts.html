@@ -1,0 +1,56 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address')
+                                }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type Home page (resources/views/home.blade.php) Login page
+                                    (resources/views/auth/login.blade.php) Registration page
+                                    (resources/views/auth/register.blade.php) Merchant dashboard
+                                    (resources/views/merchant/dashboard.blade.php) Merchant profile page
+                                    (resources/views/merchant/profile.blade.php) Merchant orders page
+                                    (resources/views/merchant/orders.blade.php) Affiliate dashboard
+                                    (resources/views/affiliate/dashboard.blade.php) Affiliate profile page
+                                    (resources/views/affiliate/profile.blade.php) Affiliate orders page
+                                    (resources/views/affiliate/orders.blade.php) Admin dashboard
+                                    (resources/views/admin/dashboard.blade.php) Admin users page
+                                    (resources/views/admin/users.blade.php) Admin merchants page
+                                    (resources/views/admin/merchants.blade.php) Admin affiliates page
+                                    (resources/views/admin/affiliates.blade.php) You can use the @extends, @section, and
+                                    @yield directives to set up a consistent layout across all the pages. Here's an
+                                    example:
